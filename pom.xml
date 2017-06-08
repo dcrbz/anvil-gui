@@ -5,8 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>xyz.upperlevel.spigot.anvilgui</groupId>
-    <artifactId>anvilgui</artifactId>
+    <artifactId>spigot-anvil-gui</artifactId>
     <version>1.2</version>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
     <description>Upperlevel's fork of WesJD/AnvilGui.</description>
 
@@ -55,17 +60,80 @@
         </dependency>
     </dependencies>
 
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Wesley Smith</name>
+            <email>me@wesjd.net</email>
+        </developer>
+        <developer>
+            <name>Lorenzo Rossi</name>
+            <email>snowycoder@upperlevel.xyz</email>
+            <url>https://wesjd.net</url>
+        </developer>
+    </developers>
+
+    <contributors>
+        <contributor>
+            <name>KeithM</name>
+            <url>http://keithcod.es</url>
+        </contributor>
+        <contributor>
+            <name>Karolek</name>
+            <url>http://karolek.net/</url>
+        </contributor>
+    </contributors>
+
+    <scm>
+        <connection>scm:git:git@github.com:upperlevel/${project.artifactId}.git</connection>
+        <developerConnection>scm:git:git@github.com:upperlevel/${project.artifactId}.git</developerConnection>
+        <url>scm:git@github.com:upperlevel/${project.artifactId}.git</url>
+    </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <defaultGoal>clean install javadoc:javadoc</defaultGoal>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
+                <extensions>true</extensions>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -78,21 +146,21 @@
                     <failOnError>false</failOnError> <!-- if any fix is possible around @deprecated, please let me know -->
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ssh</artifactId>
-                <version>1.0-beta-6</version>
-            </extension>
-        </extensions>
     </build>
-
-    <distributionManagement>
-        <repository>
-            <id>wesjd-repo</id>
-            <url>https://nexus.wesjd.net/repository/thirdparty/</url>
-        </repository>
-    </distributionManagement>
 
 </project>
