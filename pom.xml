@@ -145,8 +145,15 @@
                     <outputDirectory>${project.basedir}/javadocs</outputDirectory>
                     <reportOutputDirectory>${project.basedir}/javadocs</reportOutputDirectory>
                     <destDir>javadocs</destDir>
-                    <failOnError>true</failOnError> <!-- if any fix is possible around @deprecated, please let me know -->
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
