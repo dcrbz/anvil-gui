@@ -101,11 +101,12 @@ public class AnvilGUI {
      * Closes the inventory if it's open.
      * @throws IllegalArgumentException If the inventory isn't open
      */
-    public void closeInventory() {
+    public void closeInventory(boolean fromEvent) {
         Validate.isTrue(open, "You can't close an inventory that isn't open!");
         open = false;
 
-        wrapper.handleInventoryCloseEvent(holder);
+        if(!fromEvent)
+            wrapper.handleInventoryCloseEvent(holder);
         wrapper.setActiveContainerDefault(holder);
         wrapper.sendPacketCloseWindow(holder, containerId);
 
@@ -131,7 +132,7 @@ public class AnvilGUI {
                         meta.setDisplayName(ret);
                         clicked.setItemMeta(meta);
                         inventory.setItem(Slot.INPUT_LEFT, clicked);
-                    } else closeInventory();
+                    } else closeInventory(false);
                 }
             }
         }
@@ -140,11 +141,10 @@ public class AnvilGUI {
         public void onInventoryClose(InventoryCloseEvent e) {
             if(e.getInventory().equals(inventory)) {
                 if(open)
-                    closeInventory();
+                    closeInventory(true);
                 e.getInventory().clear();
             }
         }
-
     }
 
     /**
