@@ -6,7 +6,7 @@ import org.bukkit.Bukkit;
 import java.util.logging.Level;
 
 public class Version {
-    private static final String VERSIONS_PACKET = "net.wesjd.anvilgui.version.impl";
+    private static final String VERSIONS_PACKET = "net.wesjd.anvilgui.version.impl.";
     private static final String GITHUB_LINK = "https://github.com/upperlevel/AnvilGUI";
 
     /**
@@ -16,7 +16,7 @@ public class Version {
     private static final boolean isFallback;
 
    static {
-       final String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+       final String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3].substring(1);
        VersionWrapper w = null;
        try {
            Class<?> wrapperClazz = Version.class.getClassLoader().loadClass(VERSIONS_PACKET + "Wrapper" + version);
