@@ -131,7 +131,8 @@ public class AnvilGUI {
                         final ItemMeta meta = clicked.getItemMeta();
                         meta.setDisplayName(ret);
                         clicked.setItemMeta(meta);
-                        inventory.setItem(Slot.INPUT_LEFT, clicked);
+                        inventory.setItem(Slot.OUTPUT, clicked);
+                        clicker.updateInventory();
                     } else closeInventory(false);
                 }
             }
