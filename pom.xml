@@ -6,7 +6,7 @@
 
     <groupId>xyz.upperlevel.spigot.anvilgui</groupId>
     <artifactId>spigot-anvil-gui</artifactId>
-    <version>1.2.2</version>
+    <version>1.2.3</version>
 
     <name>AnvilGui</name>
     <description>Upperlevel's fork of WesJD/AnvilGui.</description>
@@ -22,48 +22,56 @@
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-1.8</artifactId>
             <version>1.8-R0.1-SNAPSHOT</version>
+            <optional>true</optional>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-1.8.3</artifactId>
             <version>1.8.3-R0.1-SNAPSHOT</version>
+            <optional>true</optional>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-1.8.8</artifactId>
             <version>1.8.8-R0.1-SNAPSHOT</version>
+            <optional>true</optional>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-1.9</artifactId>
             <version>1.9-R0.1-SNAPSHOT</version>
+            <optional>true</optional>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-1.9.4</artifactId>
             <version>1.9.4-R0.2-SNAPSHOT</version>
+            <optional>true</optional>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-1.10.2</artifactId>
             <version>1.10.2-R0.1-SNAPSHOT</version>
+            <optional>true</optional>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-1.11</artifactId>
             <version>1.11-R0.1-SNAPSHOT</version>
+            <optional>true</optional>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-1.12</artifactId>
             <version>1.12-R0.1-SNAPSHOT</version>
+            <optional>true</optional>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -177,5 +185,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
