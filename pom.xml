@@ -6,7 +6,7 @@
 
     <groupId>xyz.upperlevel.spigot.anvilgui</groupId>
     <artifactId>spigot-anvil-gui</artifactId>
-    <version>1.2.3</version>
+    <version>1.3</version>
 
     <name>AnvilGui</name>
     <description>Upperlevel's fork of WesJD/AnvilGui.</description>

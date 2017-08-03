@@ -8,7 +8,8 @@ import org.bukkit.inventory.Inventory;
  * @author Wesley Smith
  * @since 1.0
  */
-public interface VersionWrapper {
+public interface NmsHelper {
+    NmsHelper INSTANCE = new DefNmsHelper();
 
     /**
      * Gets the next available NMS container id for the player

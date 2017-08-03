@@ -1,6 +1,5 @@
-package net.wesjd.anvilgui.version.impl;
+package net.wesjd.anvilgui.version;
 
-import net.wesjd.anvilgui.version.VersionWrapper;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -12,9 +11,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- * This class tries to do what all the other wrappers did but using reflections, this doesn't require the version to be
- * known compile-time but it has some really serious drawbacks: it's slower, dirtier and it could not work in newer versions
- *
  * in the static block we init every used reflection util, the classes are named &lt;className&gt;Class (like playerClass),
  * the methods are named &lt;className&gt;&lt;methodName&gt; (like playerGetHandle),
  * constructors are named &lt;className&gt;Constructor (like chatMessageConstructor),
@@ -22,7 +18,7 @@ import java.lang.reflect.Method;
  *
  * Every method written with reflection has his real-code version commented before
  */
-public class FallbackWrapper implements VersionWrapper {
+public class DefNmsHelper implements NmsHelper {
     private static final String version;
 
     private static final Class<?> playerClass;

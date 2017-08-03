@@ -1,7 +1,6 @@
 package net.wesjd.anvilgui;
 
-import net.wesjd.anvilgui.version.Version;
-import net.wesjd.anvilgui.version.VersionWrapper;
+import net.wesjd.anvilgui.version.NmsHelper;
 import org.apache.commons.lang3.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -37,9 +36,9 @@ public class AnvilGUI {
     private final ClickHandler clickHandler;
 
     /**
-     * The {@link VersionWrapper} for this server
+     * The {@link NmsHelper} for this server
      */
-    private final VersionWrapper wrapper;
+    private final NmsHelper nms;
     /**
      * The container id of the inventory, used for NMS methods
      */
@@ -76,23 +75,23 @@ public class AnvilGUI {
         paper.setItemMeta(paperMeta);
         this.insert = paper;
 
-        this.wrapper = Version.getWrapper();
+        this.nms = NmsHelper.INSTANCE;
 
-        wrapper.handleInventoryCloseEvent(holder);
-        wrapper.setActiveContainerDefault(holder);
+        nms.handleInventoryCloseEvent(holder);
+        nms.setActiveContainerDefault(holder);
 
         Bukkit.getPluginManager().registerEvents(listener, plugin);
 
-        final Object container = wrapper.newContainerAnvil(holder);
+        final Object container = nms.newContainerAnvil(holder);
 
-        inventory = wrapper.toBukkitInventory(container);
+        inventory = nms.toBukkitInventory(container);
         inventory.setItem(Slot.INPUT_LEFT, this.insert);
 
-        containerId = wrapper.getNextContainerId(holder);
-        wrapper.sendPacketOpenWindow(holder, containerId);
-        wrapper.setActiveContainer(holder, container);
-        wrapper.setActiveContainerId(container, containerId);
-        wrapper.addActiveContainerSlotListener(container, holder);
+        containerId = nms.getNextContainerId(holder);
+        nms.sendPacketOpenWindow(holder, containerId);
+        nms.setActiveContainer(holder, container);
+        nms.setActiveContainerId(container, containerId);
+        nms.addActiveContainerSlotListener(container, holder);
 
         open = true;
     }
@@ -106,9 +105,9 @@ public class AnvilGUI {
         open = false;
 
         if(!fromEvent)
-            wrapper.handleInventoryCloseEvent(holder);
-        wrapper.setActiveContainerDefault(holder);
-        wrapper.sendPacketCloseWindow(holder, containerId);
+            nms.handleInventoryCloseEvent(holder);
+        nms.setActiveContainerDefault(holder);
+        nms.sendPacketCloseWindow(holder, containerId);
 
         HandlerList.unregisterAll(listener);
     }
