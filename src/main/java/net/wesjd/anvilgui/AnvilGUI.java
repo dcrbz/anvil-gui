@@ -1,7 +1,6 @@
 package net.wesjd.anvilgui;
 
 import net.wesjd.anvilgui.version.NmsHelper;
-import org.apache.commons.lang3.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -101,7 +100,8 @@ public class AnvilGUI {
      * @throws IllegalArgumentException If the inventory isn't open
      */
     public void closeInventory(boolean fromEvent) {
-        Validate.isTrue(open, "You can't close an inventory that isn't open!");
+        if(!open)
+            throw new IllegalArgumentException("You can't close an inventory that isn't open!");
         open = false;
 
         if(!fromEvent)

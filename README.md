@@ -19,20 +19,12 @@ on the issues tab.
 ```xml
 <dependencies>
     <dependency>
-        <groupId>net.wesjd</groupId>
-        <artifactId>anvilgui</artifactId>
-        <version>1.1.1-SNAPSHOT</version>
+        <groupId>xyz.upperlevel.spigot.anvilgui</groupId>
+        <artifactId>spigot-anvil-gui</artifactId>
+        <version>1.3</version>
     </dependency>
     ...
 </dependencies>
-
-<repositories>
-    <repository>
-        <id>wesjd-repo</id>
-        <url>https://nexus.wesjd.net/repository/thirdparty/</url>
-    </repository>
-    ...
-</repositories>
 ```
 
 ### In your plugin
@@ -71,8 +63,7 @@ and it will show in the dialogue box in the GUI what is supplied. If you return 
 
 ## Compilation
 
-Build with `mvn clean install`. Do note that you will need the spigot jars in this repo to be installed on your
-local repository. To make this easier, you can use [this shell script](https://gist.github.com/WesJD/39b8f0c88f74bc952e27a737d3a67234).
+Build with `mvn clean install`. Do note that you will need maven installed
 
 ## License
 
